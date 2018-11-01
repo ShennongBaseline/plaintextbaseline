@@ -7,16 +7,11 @@ namespace PlaintextBaseline.Models
 {
     public class People
     {
+        public string SSN { get; set; }
         public string FirstName { get; set; }
         public string LastName { get; set; }
-        public Gendaer Gendar { get; set; } = Gendaer.Unknown;
+        // M/F
+        public string Gender { get; set; }
         public int Age { get; set; }
-    }
-
-    public enum Gendaer
-    {
-        Unknown = 0,
-        Male,
-        Female
     }
 }

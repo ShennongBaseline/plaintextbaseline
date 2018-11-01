@@ -1,4 +1,5 @@
 ﻿using PlaintextBaseline.Models;
+using PlaintextBaseline.Services;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -25,9 +26,23 @@ namespace PlaintextBaseline.Controllers
             {
                 FirstName = "Hello",
                 LastName = "World",
-                Gendar = Gendaer.Male,
+                Gender = "M",
                 Age = 56
             };
+        }
+
+        [HttpGet]
+        [Route("api/baseline/redisjson")]
+        public async Task<object> GetRedisJson(string key)
+        {
+            return RedisService.Instance.Get<People>(key);
+        }
+
+        [HttpGet]
+        [Route("api/baseline/redisjsonasync")]
+        public async Task<object> GetRedisJsonAsync([FromUri]string key)
+        {
+            return RedisService.Instance.GetAsync<People>(key);
         }
     }
 }
